@@ -1,0 +1,18 @@
+build:
+  maxIssues: 0
+
+naming:
+  PackageNaming:
+    active: false
+
+performance:
+  SpreadOperator:
+    active: false
+
+style:
+  MaxLineLength:
+    excludes: ['**/test/**', '**/*.Test.kt']
+  SerialVersionUIDInSerializableClass:
+    active: false
+  UnusedPrivateMember:
+    excludes: ['**/androidTest/**']
