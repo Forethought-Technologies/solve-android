@@ -1,0 +1,37 @@
+#!/bin/sh
+set -e
+CHANGED_FILES="$(git --no-pager diff --name-status --no-color --cached | awk '$1 != "D" && $2 ~ /\.kts|\.kt/ { print $2}')"
+
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No Kotlin staged files."
+    exit 0
+fi;
+
+echo "######## Running checks and formatters over these files ########"
+echo "$CHANGED_FILES"
+
+######## KTLINT-GRADLE HOOK START ########
+./gradlew --quiet ktlintFormat -PinternalKtlintGitFilter="$CHANGED_FILES"
+
+echo "########  Formatted Staged Files  ########"
+echo "$CHANGED_FILES" | while read -r file; do
+if [ -f $file ]; then
+    git add $file
+fi
+done
+echo "######## Added Staged Files again ########"
+######## KTLINT-GRADLE HOOK END ########
+
+######## DETEKT-GRADLE HOOK START ########
+echo "########   Running detekt check   ########"
+EXIT_CODE=0
+./gradlew detektAll || EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "###############################################"
+  echo "                 Detekt failed                 "
+  echo " Please fix the above issues before committing "
+  echo "###############################################"
+  exit $EXIT_CODE
+fi
+echo "########  Completed detekt hook   ########"
+######## DETEKT-GRADLE HOOK END ########
