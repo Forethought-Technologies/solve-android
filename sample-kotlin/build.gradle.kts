@@ -47,5 +47,6 @@ dependencies {
     androidTestImplementation(TestDependencies.extJUnit)
     androidTestImplementation(TestDependencies.espressoCore)
     implementation(project(":kustomer"))
-    implementation("ai.forethought:solve-android-source:0.0.7")
+    implementation(project(":plugins:zendesk"))
+    implementation(Dependencies.Forethought.solve)
 }

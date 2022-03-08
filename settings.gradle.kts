@@ -3,6 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://zendesk.jfrog.io/zendesk/repo") }
         maven {
             url = uri("https://jitpack.io")
         }
@@ -10,4 +11,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Forethought_Samples"
-include(":sample-kotlin", ":sample-java", ":kustomer")
+include(":sample-kotlin", ":sample-java", ":kustomer", ":plugins:zendesk")

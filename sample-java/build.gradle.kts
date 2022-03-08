@@ -43,9 +43,9 @@ dependencies {
     implementation(Dependencies.kotlinStdLib)
     implementation(Dependencies.material)
     implementation(Dependencies.Androidx.constraintLayout)
+    implementation(Dependencies.Forethought.solve)
     testImplementation(TestDependencies.junit)
     androidTestImplementation(TestDependencies.extJUnit)
     androidTestImplementation(TestDependencies.espressoCore)
-    implementation("ai.forethought:solve-android-source:0.0.7")
     implementation(project(":kustomer"))
 }

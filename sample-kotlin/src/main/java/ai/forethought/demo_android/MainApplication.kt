@@ -2,6 +2,7 @@ package ai.forethought.demo_android
 
 import ai.forethought.Forethought
 import ai.forethought.plugin.KustomerPlugin
+import ai.forethought.zendesk.ZendeskPlugin
 import android.app.Application
 
 class MainApplication : Application() {
@@ -13,6 +14,10 @@ class MainApplication : Application() {
             null,
             forethought = Forethought
         )
-        Forethought.setup("KUSTOMER_API_KEY", listOf(kustomerPlugin))
+        val zendeskPlugin = ZendeskPlugin(
+            this, "ZENDESK_ACCOUNT_KEY", "ZENDESK_APP_ID", Forethought
+        )
+
+        Forethought.setup("FORETHOUGHT_API_KEY", listOf(zendeskPlugin, kustomerPlugin))
     }
 }
