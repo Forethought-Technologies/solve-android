@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="continue_conversation_title">Continue Conversation?</string>
+    <string name="continue_conversation_message">You have an open conversation with a chat agent %1$s. Would you like to continue that conversation, or start a new one?</string>
+    <string name="continue_conversation_positive">Continue</string>
+    <string name="continue_conversation_negative">New</string>
+    <string name="continue_conversation_unread">\u0020with an unread message</string>
+    <string name="new_conversation_welcome">Hello, how can I help you today?</string>
+</resources>

@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Forethought.addListener(this)
-
         val buttonContactSupport: TextView = findViewById(R.id.button_contact_support)
         buttonContactSupport.setOnClickListener {
             Forethought.show()
@@ -28,10 +26,5 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
 
     override fun forethoughtHandoffRequested(handoffData: ForethoughtHandoffData) {
         Log.d("FTS", "MainActivity: forethoughtHandoffRequested")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Forethought.removeListener(this)
     }
 }

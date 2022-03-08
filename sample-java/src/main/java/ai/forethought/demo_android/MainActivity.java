@@ -19,16 +19,8 @@ class MainActivity extends AppCompatActivity implements ForethoughtListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Forethought.INSTANCE.addListener(this);
-
         TextView buttonContactSupport = findViewById(R.id.button_contact_support);
         buttonContactSupport.setOnClickListener(v -> Forethought.INSTANCE.show());
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Forethought.INSTANCE.removeListener(this);
     }
 
     @Override

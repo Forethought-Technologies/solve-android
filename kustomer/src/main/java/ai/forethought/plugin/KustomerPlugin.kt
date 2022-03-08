@@ -8,6 +8,7 @@ import ai.forethought.plugin.KustomerResumeConversationSetting.SHOW_FOR_OPEN_CON
 import ai.forethought.plugin.KustomerResumeConversationSetting.SHOW_FOR_UNREAD_MESSAGE_PROMPT_FOR_OPEN
 import ai.forethought.plugin.R.string
 import android.app.Application
+import android.content.Context
 import com.kustomer.core.KustomerCore
 import com.kustomer.core.models.KusWidgetType.CHAT_ONLY
 import com.kustomer.core.models.chat.KusConversation
@@ -48,7 +49,7 @@ class KustomerPlugin(
         requestKustomerConversationData()
     }
 
-    override fun forethoughtViewDidAppear() {
+    override fun forethoughtViewDidAppear(activityContext: Context) {
         requestKustomerConversationData() {
             when (resumeConversation) {
                 SHOW_FOR_UNREAD_MESSAGE_PROMPT_FOR_OPEN -> {
@@ -132,7 +133,10 @@ class KustomerPlugin(
         /* no op */
     }
 
-    override fun forethoughtHandoffRequested(handoffData: ForethoughtHandoffData) {
+    override fun forethoughtHandoffRequested(
+        handoffData: ForethoughtHandoffData,
+        activityContext: Context
+    ) {
         Timber.d("Received kustomer handoff request from the SDK")
         var job: Job? = null
         job = coroutineScope.launch {
