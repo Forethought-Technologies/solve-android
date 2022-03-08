@@ -7,7 +7,7 @@ import java.util.List;
 
 import ai.forethought.Forethought;
 import ai.forethought.core.ForethoughtPlugin;
-import ai.forethought.plugin.KustomerPlugin;
+import ai.forethought.kustomer.KustomerPlugin;
 import ai.forethought.zendesk.ZendeskPlugin;
 
 public class MainApplication extends Application {

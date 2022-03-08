@@ -1,4 +1,4 @@
-package ai.forethought.plugin
+package ai.forethought.kustomer
 
 // / When Kustomer has an open or unread conversation,
 // choose what you would like to happen when the user asks for support

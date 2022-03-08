@@ -46,7 +46,7 @@ dependencies {
     testImplementation(TestDependencies.junit)
     androidTestImplementation(TestDependencies.extJUnit)
     androidTestImplementation(TestDependencies.espressoCore)
-    implementation(project(":kustomer"))
+    implementation(project(":plugins:kustomer"))
     implementation(project(":plugins:zendesk"))
     implementation(Dependencies.Forethought.solve)
 }
