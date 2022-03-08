@@ -38,7 +38,7 @@ tasks.register("detektAll", io.gitlab.arturbosch.detekt.Detekt::class) {
 subprojects {
     apply(plugin = "maven-publish")
     project.afterEvaluate {
-        if (!plugins.hasPlugin("android")) {
+        if (plugins.hasPlugin("android").not() && name.equals("plugins").not()) {
             configure<PublishingExtension> {
                 publications.create<MavenPublication>(project.name) {
                     project.afterEvaluate {

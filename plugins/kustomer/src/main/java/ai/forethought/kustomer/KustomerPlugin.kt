@@ -1,11 +1,11 @@
-package ai.forethought.plugin
+package ai.forethought.kustomer
 
 import ai.forethought.core.ForethoughtCore
 import ai.forethought.core.ForethoughtHandoffData
 import ai.forethought.core.ForethoughtPlugin
-import ai.forethought.plugin.KustomerResumeConversationSetting.PROMPT_IF_OPEN_OR_UNREAD
-import ai.forethought.plugin.KustomerResumeConversationSetting.SHOW_FOR_OPEN_CONVERSATION
-import ai.forethought.plugin.KustomerResumeConversationSetting.SHOW_FOR_UNREAD_MESSAGE_PROMPT_FOR_OPEN
+import ai.forethought.kustomer.KustomerResumeConversationSetting.PROMPT_IF_OPEN_OR_UNREAD
+import ai.forethought.kustomer.KustomerResumeConversationSetting.SHOW_FOR_OPEN_CONVERSATION
+import ai.forethought.kustomer.KustomerResumeConversationSetting.SHOW_FOR_UNREAD_MESSAGE_PROMPT_FOR_OPEN
 import ai.forethought.plugin.R.string
 import android.app.Application
 import android.content.Context

@@ -1,7 +1,7 @@
 package ai.forethought.demo_android
 
 import ai.forethought.Forethought
-import ai.forethought.plugin.KustomerPlugin
+import ai.forethought.kustomer.KustomerPlugin
 import ai.forethought.zendesk.ZendeskPlugin
 import android.app.Application
 
