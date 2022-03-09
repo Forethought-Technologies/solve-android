@@ -25,6 +25,14 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @Suppress("UnusedPrivateMember", "MagicNumber")
+/**
+ * Plugin to support hand-off requests to the [Kustomer] SDK.
+ *
+ * @property application android application instance.
+ * @property forethought [ForethoughtCore] instance to communicate with the Forethought Solve SDK.
+ * @param apiKey Kustomer SDK API Key
+ * @param options optionally change Kustomer SDK's Options.
+ */
 class KustomerPlugin(
     private val application: Application,
     apiKey: String,
@@ -37,6 +45,11 @@ class KustomerPlugin(
     private var openConversationCount: Int = 0
     private var latestOpenConversation: KusConversation? = null
     private var latestOpenConversationWithUnread: KusConversation? = null
+
+    /**
+     * Can be changed to any value of [KustomerResumeConversationSetting]
+     * This will change the behavior of the plugin on hand-off requests, and on start-up.
+     */
     var resumeConversation = SHOW_FOR_UNREAD_MESSAGE_PROMPT_FOR_OPEN
 
     init {
@@ -49,6 +62,13 @@ class KustomerPlugin(
         requestKustomerConversationData()
     }
 
+    /**
+     * Called when forethoughtView is shown.
+     *
+     * Fetches Kustomer SDK conversations data asynchronously,
+     * then decides to show a dialog or open a conversation
+     * based on the fetched Kustomer SDK data and the [resumeConversation] value.
+     */
     override fun forethoughtViewDidAppear(activityContext: Context) {
         requestKustomerConversationData() {
             when (resumeConversation) {
@@ -72,6 +92,11 @@ class KustomerPlugin(
         }
     }
 
+    /**
+     * Calls [ForethoughtCore.showDialog] method, to show an Android Dialog,
+     * where the positive action invokes [continueOpenConversation].
+     * @param conversationId which conversation to open on user positive button click.
+     */
     private fun showContinueConversationDialog(conversationId: String?) {
         var unreadMessageText = ""
         if (latestOpenConversationWithUnread?.unreadMessageCount ?: 0 > 0) {
@@ -89,8 +114,14 @@ class KustomerPlugin(
         })
     }
 
+    /**
+     * If [openConversationCount] is 1, call [Kustomer.openConversationWithId] to show
+     * the only open conversation, while updating Kustomer SDK's data asynchronously.
+     * If [openConversationCount] is bigger than 1, call [Kustomer.open] to open a
+     * list of all chats.
+     * @param conversationId opens this conversation if it is the only open one
+     */
     private fun continueOpenConversation(conversationId: String?) {
-        // If there is more than one open conversation, open selection screen
         if (conversationId != null && openConversationCount == 1) {
             Kustomer.getInstance().openConversationWithId(conversationId) {
                 it.dataOrNull?.let {
@@ -104,6 +135,12 @@ class KustomerPlugin(
         }
     }
 
+    /**
+     * Fetches Kustomer SDK's data asynchronously,
+     * this method will launch a [Job] on a local [CoroutineScope], then will
+     * cancel that job once the data is fetched.
+     * @param onFinishMainThread will be invoked on [Dispatchers.Main] before canceling the [Job]
+     */
     private fun requestKustomerConversationData(onFinishMainThread: (() -> Unit)? = null) {
         val defaultPage = 0
         val defaultPageSize = 10
@@ -133,6 +170,14 @@ class KustomerPlugin(
         /* no op */
     }
 
+    /**
+     * This will be called when the user requested a hand-off.
+     *
+     * It will asynchronously update the user's email in [Kustomer.describeCustomer], then will
+     * create and open a new conversation.
+     * @param handoffData the data passed from Forethought SDK when the user requested a hand-off.
+     * @param activityContext the forethought activity context, not needed for this plugin.
+     */
     override fun forethoughtHandoffRequested(
         handoffData: ForethoughtHandoffData,
         activityContext: Context
@@ -146,6 +191,12 @@ class KustomerPlugin(
         }
     }
 
+    /**
+     * Fetches Kustomer SDK's data asynchronously, and decides if the Kustomer Plugin should be
+     * shown on startup instead of the Forethought Solve UI based on the [resumeConversation] value
+     * and Kustomer SDK's data.
+     * @return false will show the Forethought Solve UI, true will show the Kustomer UI instead.
+     */
     override fun shouldShowPluginOnLaunch(): Boolean {
         requestKustomerConversationData()
         return when {
@@ -166,6 +217,15 @@ class KustomerPlugin(
         }
     }
 
+    /**
+     * Tries to create a new Kustomer Conversation, then open it with the hand-off question
+     * as a user sent message.
+     *
+     * If failed, it will open a new Kustomer Conversation UI,
+     * with [string.new_conversation_welcome] as the welcome message, this conversation will not
+     * exist on the admin dashboard until the customer sends a message manually.
+     * @param handoffData will be used to send the hand-off question in the new conversation.
+     */
     private suspend fun createNewKustomerConversation(handoffData: ForethoughtHandoffData) {
         try {
             val messages = if (handoffData.question.isNullOrEmpty()) {
@@ -198,6 +258,10 @@ class KustomerPlugin(
         }
     }
 
+    /**
+     * Set's and updates the user's email received from the hand-off data in the Kustomer SDK.
+     * @param handoffData
+     */
     private suspend fun updateCustomerEmail(handoffData: ForethoughtHandoffData) {
         handoffData.email?.let {
             val attributes = KusCustomerDescribeAttributes(

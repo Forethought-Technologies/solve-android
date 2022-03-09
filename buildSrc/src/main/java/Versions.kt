@@ -6,6 +6,7 @@ object Versions {
     const val ktlint = "10.2.1"
     const val detekt = "1.19.0"
     const val timber = "5.0.1"
+    const val dokka = "1.6.10"
 
     //libs
     object Androidx {
