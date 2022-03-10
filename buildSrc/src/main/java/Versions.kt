@@ -15,8 +15,7 @@ object Versions {
         const val constraintLayout = "2.1.3"
     }
 
-    const val solve_core = "0.0.9"
-    const val solve = "0.0.9"
+    const val solve = "0.1.0"
     const val kustomer = "2.9.5"
     const val zendesk_chat = "3.3.3"
     const val zendesk_messaging = "5.2.3"
