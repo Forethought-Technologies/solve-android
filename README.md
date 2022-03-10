@@ -50,7 +50,7 @@ dependencies {
 
    ```java
    // Java
-   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY");
+   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY", null);
    
    // Kotlin
    Forethought.setup("FORETHOUGHT_API_KEY")
@@ -76,7 +76,7 @@ dependencies {
 You can send custom parameters that you define directly with Forethought like this:
 
    ```java
-	 // Java
+	   // Java
      Map<String, String> configParameters = new HashMap<>();
      configParameters.put("exampleConfigKey", "exampleConfigValue");
      Forethought.INSTANCE.setConfigParameters(configParameters);
@@ -96,6 +96,76 @@ You can send custom parameters that you define directly with Forethought like th
        )
      Forethought.dataParameters = dataParameters
    ```
+
+### Custom Handoff Methods
+
+If you'd like to handoff Forethought chat to another provider, you can do so by implementing the following:
+
+1. Make your Activity/Fragment implements the ForethoughtListener interface, and override it's methods, You can inspect and view the handoffData object to access history of the previous chat.
+   ```java
+   // Java
+   public class MainActivity extends AppCompatActivity implements ForethoughtListener {
+      // ...
+      @Override
+       public void forethoughtHandoffRequested(@NonNull ForethoughtHandoffData forethoughtHandoffData) {
+           // Custom hand-off action
+       }
+   
+       @Override
+       public void onWidgetClosed() {
+           // Custom close action
+       }
+   }
+     
+   // Kotlin
+   class MainActivity : AppCompatActivity(), ForethoughtListener {
+     // ...
+     override fun forethoughtHandoffRequested(handoffData: ForethoughtHandoffData) {
+           // Custom hand-off action
+       }
+   
+       override fun onWidgetClosed() {
+           // Custom close action
+       }
+   }
+   ```
+   
+1. In the onCreate method, add the Activity/Fragment as a listener to the Forethought Solve SDk:
+   ```java
+   // Java
+   @Override
+   protected void onCreate(...) {
+       super.onCreate(savedInstanceState);
+       // ...
+       Forethought.INSTANCE.addListener(this);
+   }
+   
+   // Kotlin
+   override fun onCreate(...) {
+       super.onCreate(savedInstanceState)
+       // ...
+       Forethought.addListener(this)
+   }
+   ```
+   
+1. Don't forget to remove the listener on the onDestory of your Activity/Fragment to prevent memory leaks.
+   ```java
+   // Java
+   @Override
+   protected void onDestroy() {
+       super.onDestroy();
+       // Remove the listener once the activity is destroyed.
+       Forethought.INSTANCE.removeListener(this);
+   }
+   
+   // Kotlin
+   override fun onDestroy() {
+       super.onDestroy()
+       // Remove the listener once the activity is destroyed.
+       Forethought.removeListener(this)
+   }
+   ```
+
 
 ### Plugins
 
