@@ -23,7 +23,7 @@ object Dependencies {
     }
 
     object Forethought {
-        const val core = "ai.forethought.solve-android-source:core:${Versions.solve_core}"
+        const val core = "ai.forethought.solve-android-source:core:${Versions.solve}"
         const val solve = "ai.forethought:solve-android-source:${Versions.solve}"
     }
 }
