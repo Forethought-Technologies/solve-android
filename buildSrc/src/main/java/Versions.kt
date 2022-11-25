@@ -17,8 +17,8 @@ object Versions {
 
     const val solve = "0.1.0"
     const val kustomer = "2.10.4"
-    const val zendesk_chat = "3.3.3"
-    const val zendesk_messaging = "5.2.3"
+    const val zendesk_chat = "3.3.6"
+    const val zendesk_messaging = "5.2.5"
 
     const val material = "1.5.0"
 
