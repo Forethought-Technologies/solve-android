@@ -10,6 +10,7 @@ import ai.forethought.plugin.R.string
 import android.app.Application
 import android.content.Context
 import com.kustomer.core.KustomerCore
+import com.kustomer.core.models.KusPreferredView
 import com.kustomer.core.models.KusWidgetType.CHAT_ONLY
 import com.kustomer.core.models.chat.KusConversation
 import com.kustomer.core.models.chat.KusCustomerDescribeAttributes
@@ -130,7 +131,7 @@ class KustomerPlugin(
                 }
             }
         } else {
-            Kustomer.getInstance().open(CHAT_ONLY)
+            Kustomer.getInstance().open(KusPreferredView.CHAT_ONLY)
             forethought.hide()
         }
     }
