@@ -11,4 +11,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Forethought_Samples"
-include(":sample-kotlin", ":sample-java", ":plugins:kustomer", ":plugins:zendesk")
+include(":sample-kotlin", ":sample-java", ":plugins:kustomer", ":plugins:zendesk", ":plugins:intercom")
