@@ -22,13 +22,18 @@ object Dependencies {
         const val messaging = "com.zendesk:messaging:${Versions.zendesk_messaging}"
     }
 
+    object Intercom {
+        const val sdk = "io.intercom.android:intercom-sdk:${Versions.intercom_sdk}"
+        const val messaging = "com.google.firebase:firebase-messaging:${Versions.intercom_messaging}"
+    }
+
     object Forethought {
         const val core = "ai.forethought.solve-android-source:core:${Versions.solve}"
         const val solve = "ai.forethought:solve-android-source:${Versions.solve}"
     }
 }
 
-object TestDependencies{
+object TestDependencies {
     const val junit = "junit:junit:${Versions.junit}"
     const val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
