@@ -26,13 +26,13 @@ repositories {
 // add the dependencies to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:0.1.0"
+   implementation "ai.forethought:solve-android-source:0.1.2"
 
    // To add Kustomer plugin
-   implementation "ai.forethought.solve-android:kustomer:0.1.0"
+   implementation "ai.forethought.solve-android:kustomer:0.1.2"
 
    // To add Zendesk Plugin
-   implementation "ai.forethought.solve-android:zendesk:0.1.0"
+   implementation "ai.forethought.solve-android:zendesk:0.1.2"
 }
    ```
 
@@ -53,13 +53,13 @@ repositories {
 // add the dependencies to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:0.1.0")
+   implementation("ai.forethought:solve-android-source:0.1.2")
 
    // To add Kustomer plugin
-   implementation("ai.forethought.solve-android:kustomer:0.1.0")
+   implementation("ai.forethought.solve-android:kustomer:0.1.2")
 
    // To add Zendesk Plugin
-   implementation("ai.forethought.solve-android:zendesk:0.1.0")
+   implementation("ai.forethought.solve-android:zendesk:0.1.2")
 }
    ```
 
@@ -81,10 +81,19 @@ ZendeskPlugin zendeskPlugin = new ZendeskPlugin(this,
         "ZENDESK_ACCOUNT_KEY",
         "ZENDESK_APP_ID",
         Forethought.INSTANCE);
+
+// Create Intercom Plugin
+        IntercomPlugin intercomPlugin = new IntercomPlugin(
+                this,
+                "INTERCOM_API_KEY",
+                "INTERCOM_APP_ID",
+                Forethought.INSTANCE
+        );
 // Pass plugins as a list to Forethought
 List<ForethoughtPlugin> plugins = new ArrayList<>();
 plugins.add(kustomerPlugin);
 plugins.add(zendeskPlugin);
+plugins.add(intercomPlugin);
 Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY", plugins);
    ```
 
@@ -104,8 +113,16 @@ val kustomerPlugin = KustomerPlugin(
 val zendeskPlugin = ZendeskPlugin(
     this, "ZENDESK_ACCOUNT_KEY", "ZENDESK_APP_ID", Forethought
 )
+
+// Create Intercom Plugin
+val intercomPlugin = IntercomPlugin(
+            this,
+            "INTERCOM_API_KEY",
+            "INTERCOM_APP_ID",
+            Forethought
+        )
 // Pass plugins as a list to Forethought
-Forethought.setup("FORETHOUGHT_API_KEY", listOf(zendeskPlugin, kustomerPlugin))
+Forethought.setup("FORETHOUGHT_API_KEY", listOf(zendeskPlugin, kustomerPlugin, intercomPlugin))
    ```
 
 
