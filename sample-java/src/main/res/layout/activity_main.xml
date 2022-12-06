@@ -5,11 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_contact_support"
+    <LinearLayout
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/contact_support" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/button_contact_support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_support" />
+
+
+        <TextView
+            android:paddingTop="40dp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="@string/intercom_explain_signin"/>
+        <Button
+            android:id="@+id/button_contact_support_intercom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/intercom_contact_support" />
+    </LinearLayout>
+
 
 </FrameLayout>

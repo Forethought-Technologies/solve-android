@@ -9,6 +9,7 @@ import java.util.Map;
 
 import ai.forethought.Forethought;
 import ai.forethought.core.ForethoughtPlugin;
+import ai.forethought.intercom.IntercomPlugin;
 import ai.forethought.kustomer.KustomerPlugin;
 import ai.forethought.zendesk.ZendeskPlugin;
 
@@ -33,6 +34,15 @@ public class MainApplication extends Application {
                 "ZENDESK_APP_ID",
                 Forethought.INSTANCE);
 
+        // Create Intercom Plugin
+        IntercomPlugin intercomPlugin = new IntercomPlugin(
+                this,
+                "INTERCOM_API_KEY",
+                "INTERCOM_APP_ID",
+                Forethought.INSTANCE
+        );
+
+
         // Custom Data and Config Parameters
         Map<String, String> configParameters = new HashMap<>();
         configParameters.put("exampleConfigKey", "exampleConfigValue");
@@ -47,6 +57,7 @@ public class MainApplication extends Application {
         List<ForethoughtPlugin> plugins = new ArrayList<>();
         plugins.add(kustomerPlugin);
         plugins.add(zendeskPlugin);
+        plugins.add(intercomPlugin);
         Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY", plugins);
     }
 }
