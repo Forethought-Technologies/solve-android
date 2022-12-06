@@ -17,6 +17,17 @@ import io.intercom.android.sdk.IntercomSpace
  * @param application android application instance.
  * @param appId Intercom SDK Application ID - https://app.intercom.com/a/apps/_/settings/android
  * @param apiKey Intercom SDK API key. - https://app.intercom.com/a/apps/_/settings/android
+ *
+ *
+ * IMPORTANT: In order to use Intercom, they require a user login, please follow intercom documentation
+ * to sign in your user before you can accept a handoff to intercom.
+ * More info can be found here:
+ * https://developers.intercom.com/installing-intercom/docs/using-intercom-android
+ *
+ * IMPORTANT: This plugin will Install Intercom with Push Messaging,
+ * if you want to use intercom push messaging feature, make sure you add the required permissions to your app.
+ * More info can be found here:
+ * https://developers.intercom.com/installing-intercom/docs/setup-android#permissions
  */
 class IntercomPlugin(
     application: Application,
