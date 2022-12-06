@@ -251,9 +251,11 @@ class KustomerPlugin(
             } else {
                 throw UnknownError("Kustomer Failed to create conversion")
             }
+            forethought.sendHandoffResponse(true)
         } catch (e: UnknownError) {
             Timber.e(e.message ?: "Kustomer Failure on Handoff")
             forethought.hide()
+            forethought.sendHandoffResponse(false)
             Kustomer.getInstance()
                 .openNewConversation(application.getString(string.new_conversation_welcome))
         }
