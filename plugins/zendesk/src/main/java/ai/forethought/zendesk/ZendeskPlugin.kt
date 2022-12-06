@@ -77,6 +77,7 @@ class ZendeskPlugin(
 
             // Hide Forethought UI
             forethought.hide()
+            forethought.sendHandoffResponse(true)
         }
     }
 
