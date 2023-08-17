@@ -171,4 +171,4 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
 
 **Our Plugins are no longer supported and will be deprecated in future versions**
 
-Use your Helpdesk's SDK to handle chat handoffs however you would like in the `forethoughtHandoffRequested` method explained in the "Custom Handoff Methods" section
+Use your Helpdesk's SDK to handle chat handoffs however you would like in the `forethoughtHandoffRequested` method explained in the [Custom Handoff Methods](#custom-handoff-methods) section
