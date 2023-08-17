@@ -51,7 +51,7 @@ dependencies {
    ```java
    // Java
    Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY", null);
-   
+
    // Kotlin
    Forethought.setup("FORETHOUGHT_API_KEY")
    ```
@@ -63,7 +63,7 @@ dependencies {
    ```java
    // Java
    Forethought.INSTANCE.show();
-   
+
    // Kotlin
    Forethought.show()
    ```
@@ -110,26 +110,26 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
        public void forethoughtHandoffRequested(@NonNull ForethoughtHandoffData forethoughtHandoffData) {
            // Custom hand-off action
        }
-   
+
        @Override
        public void onWidgetClosed() {
            // Custom close action
        }
    }
-     
+
    // Kotlin
    class MainActivity : AppCompatActivity(), ForethoughtListener {
      // ...
      override fun forethoughtHandoffRequested(handoffData: ForethoughtHandoffData) {
            // Custom hand-off action
        }
-   
+
        override fun onWidgetClosed() {
            // Custom close action
        }
    }
    ```
-   
+
 1. In the onCreate method, add the Activity/Fragment as a listener to the Forethought Solve SDk:
    ```java
    // Java
@@ -139,7 +139,7 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
        // ...
        Forethought.INSTANCE.addListener(this);
    }
-   
+
    // Kotlin
    override fun onCreate(...) {
        super.onCreate(savedInstanceState)
@@ -147,7 +147,7 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
        Forethought.addListener(this)
    }
    ```
-   
+
 1. Don't forget to remove the listener on the onDestory of your Activity/Fragment to prevent memory leaks.
    ```java
    // Java
@@ -157,7 +157,7 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
        // Remove the listener once the activity is destroyed.
        Forethought.INSTANCE.removeListener(this);
    }
-   
+
    // Kotlin
    override fun onDestroy() {
        super.onDestroy()
@@ -169,4 +169,6 @@ If you'd like to handoff Forethought chat to another provider, you can do so by 
 
 ### Plugins
 
-To attach Forethought to another chat provider, such as Zendesk or Kustomer, please check out our [plugin documentation](plugins/PLUGINS.md).
+**Our Plugins are no longer supported and will be deprecated in future versions**
+
+Use your Helpdesk's SDK to handle chat handoffs however you would like in the `forethoughtHandoffRequested` method explained in the "Custom Handoff Methods" section
