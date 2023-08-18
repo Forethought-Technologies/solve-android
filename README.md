@@ -127,10 +127,10 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
            // ...
 
            // if handoff was successful
-           Forethought.sendHandoffResponse(true);
+           Forethought.sendHandoffResponse(true)
 
            // if handoff was unsuccessful
-           Forethought.sendHandoffResponse(false);
+           Forethought.sendHandoffResponse(false)
        }
 
        override fun onWidgetClosed() {
