@@ -71,9 +71,9 @@ dependencies {
    ```
 
 
-## Optional Additions
+## Additional Usage
 
-### Custom Data Parameters
+### Data Parameters
 
 To send data parameters:
 
@@ -92,7 +92,7 @@ To send data parameters:
      Forethought.dataParameters = dataParameters
    ```
 
-### Custom Handoff Methods
+### Handoffs
 
 To handoff from Forethought to another helpdesk / provider, implement the following:
 
