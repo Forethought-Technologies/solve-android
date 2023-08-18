@@ -75,7 +75,7 @@ dependencies {
 
 ### Data Parameters
 
-To send data parameters:
+To send data parameters, add the following before calling `.show()`:
 
    ```java
 	   // Java
