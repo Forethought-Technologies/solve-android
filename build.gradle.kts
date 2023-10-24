@@ -50,7 +50,7 @@ subprojects {
                         } else if (plugins.hasPlugin("android-library")) {
                             from(components["release"])
                         }
-                        version = "0.0.1"
+                        version = "1.0.1"
                     }
                 }
             }

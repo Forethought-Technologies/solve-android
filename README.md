@@ -21,7 +21,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:0.1.0"
+   implementation "ai.forethought:solve-android-source:1.0.1"
 }
    ```
 
@@ -40,7 +40,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:0.1.0")
+   implementation("ai.forethought:solve-android-source:1.0.1")
 }
    ```
 
@@ -178,4 +178,4 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
 
 ### Plugins
 
-**⛔️ Our Plugins are no longer supported and will be deprecated in future versions ⛔️**
+**⛔️ Plugins were removed starting with version 1.0.0 ⛔️**

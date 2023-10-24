@@ -47,7 +47,4 @@ dependencies {
     testImplementation(TestDependencies.junit)
     androidTestImplementation(TestDependencies.extJUnit)
     androidTestImplementation(TestDependencies.espressoCore)
-    implementation(project(":plugins:kustomer"))
-    implementation(project(":plugins:zendesk"))
-    implementation(project(":plugins:intercom"))
 }
