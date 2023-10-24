@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Forethought</string>
     <string name="contact_support">Contact Support</string>
-    <string name="intercom_contact_support">Sign in a dummy Intercom User\n then Contact Support</string>
-    <string name="intercom_explain_signin">BELOW BUTTON IS ONLY FOR INTERCOM PLUGIN INTEGRATION\n please read Intercom documentation to properly sign in your user.\n The sign in flow implemented in this app is for testing purposes only.</string>
 </resources>
