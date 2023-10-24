@@ -178,4 +178,4 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
 
 ### Plugins
 
-**⛔️ Plugins were removed starting with version 1.0.0 ⛔️**
+**⛔️ Plugins were removed in version 1.0.0 ⛔️**
