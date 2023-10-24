@@ -21,6 +21,6 @@ class MainApplication : Application() {
         Forethought.dataParameters = dataParameters
 
         // Pass plugins as a list to Forethought
-        Forethought.setup("48c1734c-5cb6-4803-863b-85e38c343e0b")
+        Forethought.setup("FORETHOUGHT_API_KEY")
     }
 }
