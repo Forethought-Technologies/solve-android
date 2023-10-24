@@ -50,7 +50,7 @@ dependencies {
 
    ```java
    // Java
-   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY", null);
+   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY");
 
    // Kotlin
    Forethought.setup("FORETHOUGHT_API_KEY")

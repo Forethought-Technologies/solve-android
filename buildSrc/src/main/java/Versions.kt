@@ -15,12 +15,7 @@ object Versions {
         const val constraintLayout = "2.1.3"
     }
 
-    const val solve = "0.1.2"
-    const val kustomer = "2.10.4"
-    const val zendesk_chat = "3.3.6"
-    const val zendesk_messaging = "5.2.5"
-    const val intercom_sdk = "14.0.0"
-    const val intercom_messaging = "23.1.+"
+    const val solve = "1.0.1"
 
     const val material = "1.5.0"
 
