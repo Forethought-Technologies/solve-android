@@ -22,6 +22,6 @@ public class MainApplication extends Application {
         dataParameters.put("tracking-email", "test@ft.ai");
         Forethought.INSTANCE.setDataParameters(dataParameters);
 
-        Forethought.INSTANCE.setup("48c1734c-5cb6-4803-863b-85e38c343e0b");
+        Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY");
     }
 }
