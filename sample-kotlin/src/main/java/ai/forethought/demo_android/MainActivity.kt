@@ -28,10 +28,11 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
         // Custom hand-off action
         Log.i("FTS", "ForethoughtHandOffRequested")
         // success
-        Forethought.hide()
         Forethought.sendHandoffResponse(true)
         // failure
         // Forethought.sendHandoffResponse(false)
+        // hide Forethought
+        Forethought.hide()
     }
 
     override fun onWidgetClosed() {
