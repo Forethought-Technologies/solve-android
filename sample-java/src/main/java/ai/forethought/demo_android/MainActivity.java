@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity implements ForethoughtListen
         // Custom hand-off action
         Log.i("FTS", "ForethoughtHandOffRequested");
         // success
-        Forethought.INSTANCE.hide();
         Forethought.INSTANCE.sendHandoffResponse(true);
         // failure
         // Forethought.INSTANCE.sendHandoffResponse(false);
+        // hide Forethought
+        Forethought.INSTANCE.hide();
     }
 
     @Override
