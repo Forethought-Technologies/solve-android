@@ -111,6 +111,9 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
 
            // if handoff was unsuccessful
            Forethought.INSTANCE.sendHandoffResponse(false);
+
+           // hide Forethought after sendHandoffResponse
+           Forethought.INSTANCE.hide();
        }
 
        @Override
@@ -131,6 +134,9 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
 
            // if handoff was unsuccessful
            Forethought.sendHandoffResponse(false)
+
+           // hide Forethought after sendHandoffResponse
+           Forethought.hide()
        }
 
        override fun onWidgetClosed() {
