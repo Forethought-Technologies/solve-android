@@ -21,7 +21,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:1.0.4"
+   implementation "ai.forethought:solve-android-source:1.1.0"
 }
    ```
 
@@ -40,7 +40,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:1.0.4")
+   implementation("ai.forethought:solve-android-source:1.1.0")
 }
    ```
 
@@ -96,7 +96,8 @@ To send data parameters, add the following before calling `.show()`:
 
 To handoff from Forethought to another helpdesk / provider, implement the following:
 
-1. Make sure the `Activity/Fragment` implements the ForethoughtListener interface, and override it's methods.
+1. Make sure the `Activity/Fragment` implements the ForethoughtListener interface, and override it's methods. The methods
+   do have default implementations so they are optional.
    ```java
    // Java
    public class MainActivity extends AppCompatActivity implements ForethoughtListener {
@@ -120,6 +121,11 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
        public void onWidgetClosed() {
            // Custom close action
        }
+
+       @Override
+       public void onWidgetError() {
+         // handle when the webview doesn't render the widget
+       }
    }
 
    // Kotlin
@@ -141,6 +147,10 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
 
        override fun onWidgetClosed() {
            // Custom close action
+       }
+
+       override fun onWidgetError() {
+           // handle when the webview doesn't render the widget
        }
    }
    ```
