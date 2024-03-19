@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
         setContentView(R.layout.activity_main)
 
         // add activity as listener to customize hand-off requests and close actions
-        Forethought.addListener(this)
+        Forethought.INSTANCE.addListener(this)
 
         val buttonContactSupport: TextView = findViewById(R.id.button_contact_support)
         buttonContactSupport.setOnClickListener {
             // Show Forethought Solve UI on button click
-            Forethought.show()
+            Forethought.INSTANCE.show()
         }
     }
 
@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
         // Custom hand-off action
         Log.i("FTS", "ForethoughtHandOffRequested")
         // success
-        Forethought.sendHandoffResponse(true)
+        Forethought.INSTANCE.sendHandoffResponse(true)
         // failure
-        // Forethought.sendHandoffResponse(false)
+        // Forethought.INSTANCE.sendHandoffResponse(false)
         // hide Forethought
-        Forethought.hide()
+        Forethought.INSTANCE.hide()
     }
 
     override fun onWidgetClosed() {
@@ -43,6 +43,6 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
     override fun onDestroy() {
         super.onDestroy()
         // Remove the listener once the activity is destroyed.
-        Forethought.removeListener(this)
+        Forethought.INSTANCE.removeListener(this)
     }
 }
