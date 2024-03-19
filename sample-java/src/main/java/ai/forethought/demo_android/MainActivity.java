@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ai.forethought.Forethought;
+import ai.forethought.core.ForethoughtErrorData;
 import ai.forethought.core.ForethoughtHandoffData;
 import ai.forethought.core.ForethoughtListener;
 
@@ -51,5 +52,11 @@ public class MainActivity extends AppCompatActivity implements ForethoughtListen
         super.onDestroy();
         // Remove the listener once the activity is destroyed.
         Forethought.INSTANCE.removeListener(this);
+    }
+
+    @Override
+    public void onWidgetError(@NonNull ForethoughtErrorData forethoughtErrorData) {
+        Log.i("FTS", "onWidgetError");
+        Forethought.INSTANCE.hide();
     }
 }

@@ -49,10 +49,6 @@ dependencies {
 1. Inside the Android Application class, add the following lines to the onCreate() method:
 
    ```java
-   // Java
-   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY");
-
-   // Kotlin
    Forethought.setup("FORETHOUGHT_API_KEY")
    ```
 
@@ -61,13 +57,8 @@ dependencies {
 3. To show / hide the Forethought Solve SDK, add the following in the `Activity/Fragment`:
 
    ```java
-   // Java
    Forethought.INSTANCE.show();
    Forethought.INSTANCE.hide();
-
-   // Kotlin
-   Forethought.show()
-   Forethought.hide()
    ```
 
 
@@ -89,7 +80,7 @@ To send data parameters, add the following before calling `.show()`:
         "language" to "EN",
         "tracking-email" to "test@ft.ai"
        )
-     Forethought.dataParameters = dataParameters
+     Forethought.INSTANCE.dataParameters = dataParameters
    ```
 
 ### Handoffs
@@ -136,13 +127,13 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
            // ...
 
            // if handoff was successful
-           Forethought.sendHandoffResponse(true)
+           Forethought.INSTANCE.sendHandoffResponse(true)
 
            // if handoff was unsuccessful
-           Forethought.sendHandoffResponse(false)
+           Forethought.INSTANCE.sendHandoffResponse(false)
 
            // hide Forethought after sendHandoffResponse
-           Forethought.hide()
+           Forethought.INSTANCE.hide()
        }
 
        override fun onWidgetClosed() {
@@ -169,7 +160,7 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
    override fun onCreate(...) {
        super.onCreate(savedInstanceState)
        // ...
-       Forethought.addListener(this)
+       Forethought.INSTANCE.addListener(this)
    }
    ```
 
@@ -187,7 +178,7 @@ To handoff from Forethought to another helpdesk / provider, implement the follow
    override fun onDestroy() {
        super.onDestroy()
        // Remove the listener once the activity is destroyed.
-       Forethought.removeListener(this)
+       Forethought.INSTANCE.removeListener(this)
    }
    ```
 

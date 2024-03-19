@@ -1,8 +1,8 @@
 //version ants for the Kotlin DSL dependencies
 object Versions {
     //project level
-    const val gradle = "7.1.1"
-    const val kotlin = "1.6.10"
+    const val gradle = "7.4.2"
+    const val kotlin = "1.9.0"
     const val ktlint = "10.2.1"
     const val detekt = "1.19.0"
     const val timber = "5.0.1"
@@ -15,7 +15,7 @@ object Versions {
         const val constraintLayout = "2.1.3"
     }
 
-    const val solve = "1.0.1"
+    const val solve = "1.2.0"
 
     const val material = "1.5.0"
 
