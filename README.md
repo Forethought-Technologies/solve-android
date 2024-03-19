@@ -49,7 +49,7 @@ dependencies {
 1. Inside the Android Application class, add the following lines to the onCreate() method:
 
    ```java
-   Forethought.setup("FORETHOUGHT_API_KEY")
+   Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY")
    ```
 
 2. Replace `FORETHOUGHT_API_KEY` with a valid Forethought API key
