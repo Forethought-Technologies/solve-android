@@ -61,7 +61,6 @@ Forethought.INSTANCE.show();
 Forethought.INSTANCE.hide();
 ```
 
-
 ## Additional Usage
 
 ### Data Parameters
@@ -154,6 +153,7 @@ class MainActivity : AppCompatActivity(), ForethoughtListener {
 ```
 
 2. In the onCreate method, add the `Activity/Fragment` as a listener to the Forethought Solve SDk:
+
 ```java
 // Java
 @Override
@@ -172,6 +172,7 @@ override fun onCreate(...) {
 ```
 
 3. Don't forget to remove the listener on the `onDestory` of the `Activity/Fragment` to prevent memory leaks.
+
 ```java
 // Java
 @Override
@@ -188,7 +189,6 @@ override fun onDestroy() {
    Forethought.INSTANCE.removeListener(this)
 }
 ```
-
 
 ### Plugins
 
