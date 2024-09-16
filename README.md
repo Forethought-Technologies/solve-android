@@ -63,7 +63,7 @@ Forethought.INSTANCE.hide();
 
 ## Additional Usage
 
-### Data Parameters
+### Widget Parameters
 
 A comprehensive list of non workflow context variable parameters can be found [here.](https://support.forethought.ai/hc/en-us/articles/1500002917301-Installation-Guide-for-Solve-Widget#:~:text=Additional%20Attributes) To pass widget parameters, add any or all the following before calling `.show()`:
 
@@ -86,9 +86,17 @@ val dataParameters = mapOf(
 Forethought.INSTANCE.dataParameters = dataParameters
 ```
 
-### Handoffs
+### Callback Methods
 
-To handoff from Forethought to another helpdesk / provider, implement the following:
+ForethoughtListener includes the following callback methods.
+- `forethoughtHandoffRequested`
+  - Called when the user is being handed off to another helpdesk (e.g. Salesforce, Zendesk, Kustomer, etc.).
+- `onWidgetClosed`
+  - Called when the widget is being closed.
+- `onWidgetError`
+  - Called when the widget does not render properly.
+
+To implement these callback methods, add the following:
 
 1. Make sure the `Activity/Fragment` implements the ForethoughtListener interface, and override it's methods. The methods
    do have default implementations so they are optional.
@@ -188,6 +196,22 @@ override fun onDestroy() {
    // Remove the listener once the activity is destroyed.
    Forethought.INSTANCE.removeListener(this)
 }
+```
+
+### Handoffs
+
+The `forethoughtHandoffRequested` callback method has a single parameter that will include all the data normally used by Forethought to handoff to the helpdesk's widget in the browser. This data will have the following type:
+
+```kotlin
+data class ForethoughtHandoffData(
+    val event: String?,
+    val name: String?,
+    val email: String?,
+    val question: String?,
+    val integration: String?,
+    val department: String?,
+    val additionalParameters: Map<String, Any>?,
+)
 ```
 
 ### Plugins
