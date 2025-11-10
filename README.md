@@ -21,7 +21,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:1.3.6"
+   implementation "ai.forethought:solve-android-source:1.4.0"
 }
 ```
 
@@ -40,7 +40,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:1.3.6")
+   implementation("ai.forethought:solve-android-source:1.4.0")
 }
 ```
 
