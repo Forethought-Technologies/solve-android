@@ -4,6 +4,10 @@ This repository contains the framework and instructions for the Forethought Andr
 
 A valid API key is needed in order to use the Forethought Solve SDK. In additon to the instructions below, sample apps have been written in Java and Kotlin.
 
+## Release Notes
+
+For details about each release, including new features, bug fixes, and breaking changes, please see the [CHANGELOG](CHANGELOG.md).
+
 ## Installation
 
 ### Groovy
