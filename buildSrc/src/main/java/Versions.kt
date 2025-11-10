@@ -15,7 +15,7 @@ object Versions {
         const val constraintLayout = "2.1.3"
     }
 
-    const val solve = "1.3.6"
+    const val solve = "1.4.0"
 
     const val material = "1.5.0"
 
