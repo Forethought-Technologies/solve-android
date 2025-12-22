@@ -25,7 +25,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:1.4.0"
+   implementation "ai.forethought:solve-android-source:1.5.0"
 }
 ```
 
@@ -44,7 +44,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:1.4.0")
+   implementation("ai.forethought:solve-android-source:1.5.0")
 }
 ```
 
@@ -54,6 +54,9 @@ dependencies {
 
 ```java
 Forethought.INSTANCE.setup("FORETHOUGHT_API_KEY")
+
+//Solve Web Call
+Forethought.INSTANCE.setup(apiKey = "FORETHOUGHT_API_KEY", isWebCall = true)
 ```
 
 2. Replace `FORETHOUGHT_API_KEY` with a valid Forethought API key

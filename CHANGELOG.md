@@ -1,5 +1,11 @@
 # Changelog
 
+**1.5.0** — 2025-12-22
+
+- added support for Solve Web Call
+
+⸻
+
 **1.4.0** — 2025-11-06
 
 - added `RECORD_AUDIO` permission to manifest
