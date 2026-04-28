@@ -1,5 +1,11 @@
 # Changelog
 
+**1.5.1** — 2026-04-28
+
+- fixed an issue where text selection was unreadable
+
+⸻
+
 **1.5.0** — 2025-12-22
 
 - added support for Solve Web Call
