@@ -1,5 +1,11 @@
 # Changelog
 
+**1.5.4** - 2026-06-25
+
+- Fixed a crash when opening a link with no browser/handler installed
+
+⸻
+
 **1.5.1** — 2026-04-28
 
 - fixed an issue where text selection was unreadable
