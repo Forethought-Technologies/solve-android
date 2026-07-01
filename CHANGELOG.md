@@ -1,5 +1,14 @@
 # Changelog
 
+**1.6.0** — 2026-07-01
+
+- added `triggerEventReceived` listener for trigger event workflow steps
+- added `sendTriggerEventResponse` to resume a conversation after a trigger event
+- added `clearLocalData`, `launchQuery`, `updateConversationContext`, `updateConfigParams`, and `sendMessage` APIs
+- changed the loading indicator to be black
+
+⸻
+
 **1.5.4** - 2026-06-25
 
 - Fixed a crash when opening a link with no browser/handler installed
