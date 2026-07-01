@@ -25,7 +25,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation "ai.forethought:solve-android-source:1.5.4"
+   implementation "ai.forethought:solve-android-source:1.6.0"
 }
 ```
 
@@ -44,7 +44,7 @@ repositories {
 // add the dependency to the app's build.gradle
 dependencies {
    // Solve Android SDK
-   implementation("ai.forethought:solve-android-source:1.5.4")
+   implementation("ai.forethought:solve-android-source:1.6.0")
 }
 ```
 
@@ -219,6 +219,79 @@ data class ForethoughtHandoffData(
     val department: String?,
     val additionalParameters: Map<String, Any>?,
 )
+```
+
+### Trigger Events
+
+A workflow can include a trigger event step that hands control back to your app to do native work (e.g. authenticate a user, look up account data) before resolving one or more context variables. When such a step is reached, the `triggerEventReceived` callback is invoked.
+
+```kotlin
+data class ForethoughtTriggerEventData(
+    val event: String?,
+    // The event name configured on the trigger event step
+    val name: String?,
+    // Names of the context variables the host is expected to return
+    val expectedContextVariables: List<String>?,
+    // Additional context from the step (includes `free_form_query`)
+    val additionalContext: Map<String, Any>?,
+)
+```
+
+Implement `triggerEventReceived` (it has a default implementation, so it is optional), do your native work, then call `sendTriggerEventResponse` with the trigger event's `name` and the resolved context variables to resume the conversation.
+
+```java
+// Java
+@Override
+public void triggerEventReceived(@NonNull ForethoughtTriggerEventData triggerEventData) {
+   // Do your native work here, then resolve the expected context variables.
+   Map<String, Object> payload = new HashMap<>();
+   payload.put("cv1", "foo");
+   payload.put("cv2", "bar");
+
+   Forethought.INSTANCE.sendTriggerEventResponse(triggerEventData.getName(), payload);
+}
+
+// Kotlin
+override fun triggerEventReceived(triggerEventData: ForethoughtTriggerEventData) {
+   // Do your native work here, then resolve the expected context variables.
+   Forethought.INSTANCE.sendTriggerEventResponse(
+      identifier = triggerEventData.name ?: "",
+      payload = mapOf("cv1" to "foo", "cv2" to "bar")
+   )
+}
+```
+
+### Widget Commands
+
+The following methods drive the widget while it is shown. Each is a no-op unless the Forethought Solve view is currently shown (`show()` has been called) and the widget has finished loading.
+
+- `launchQuery(query)` — launches the widget with an initial query on the user's behalf.
+- `sendMessage(message)` — sends a message on the user's behalf.
+- `updateConversationContext(context)` — merges the given key/value pairs into the conversation context.
+- `updateConfigParams(params)` — updates the widget configuration parameters.
+- `clearLocalData()` — clears the widget's locally stored data (e.g. conversation history).
+
+```java
+// Java
+Forethought.INSTANCE.launchQuery("How do I reset my password?");
+Forethought.INSTANCE.sendMessage("Hello");
+
+Map<String, Object> context = new HashMap<>();
+context.put("<cv_id>", "new cv value");
+Forethought.INSTANCE.updateConversationContext(context);
+
+Map<String, Object> params = new HashMap<>();
+params.put("theme-color", "red");
+Forethought.INSTANCE.updateConfigParams(params);
+
+Forethought.INSTANCE.clearLocalData();
+
+// Kotlin
+Forethought.INSTANCE.launchQuery("How do I reset my password?")
+Forethought.INSTANCE.sendMessage("Hello")
+Forethought.INSTANCE.updateConversationContext(mapOf("<cv_id>" to "new cv value"))
+Forethought.INSTANCE.updateConfigParams(mapOf("theme-color" to "red"))
+Forethought.INSTANCE.clearLocalData()
 ```
 
 ### Plugins
