@@ -1,5 +1,11 @@
 # Changelog
 
+**1.6.1** - 2026-09-04
+
+- Fixed an issue that could prevent `sendHandoffResponse` from being sent
+
+⸻
+
 **1.6.0** — 2026-07-01
 
 - added `triggerEventReceived` listener for trigger event workflow steps
